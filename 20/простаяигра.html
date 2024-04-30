@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Простая игра</title>
+<style>
+    canvas {
+        border: 1px solid black;
+        margin-top: 1%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border: 1px;
+        border-style: solid;
+        border-color: #535353;
+        background-color: black;
+      
+    }
+    
+    h1 {
+        margin-top: 0;
+        color: rgb(0, 0, 0);
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <h1 class="text-center">Простая игра</h1>
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+<script>
+   const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const playerWidth = 50;
+    const playerHeight = 50;
+    let playerX = canvas.width / 2 - playerWidth / 2;
+    let playerY = canvas.height - playerHeight - 10;
+    const playerSpeed = 5;
+    let playerDirection = 0;
+
+    const enemyWidth = 50;
+    const enemyHeight = 50;
+    const enemySpeed = 3;
+    let enemies = [];
+    const enemySpawnTime = 1000;
+    let lastEnemySpawn = Date.now();
+
+    let score = 0;
+
+    function drawPlayer(x, y) {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(x, y, playerWidth, playerHeight);
+    }
+
+    function drawEnemies() {
+        ctx.fillStyle = 'white';
+        enemies.forEach(enemy => {
+            ctx.fillRect(enemy[0], enemy[1], enemyWidth, enemyHeight);
+        });
+    }
+
+    function checkCollision(playerX, playerY, enemyX, enemyY) {
+        return (
+            playerX < enemyX + enemyWidth &&
+            playerX + playerWidth > enemyX &&
+            playerY < enemyY + enemyHeight &&
+            playerY + playerHeight > enemyY
+        );
+    }
+
+    function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Handle player movement
+        if (playerDirection === -1 && playerX > 0) {
+            playerX -= playerSpeed;
+        } else if (playerDirection === 1 && playerX < canvas.width - playerWidth) {
+            playerX += playerSpeed;
+        }
+
+        // Spawn new enemies
+        const now = Date.now();
+        if (now - lastEnemySpawn > enemySpawnTime) {
+            lastEnemySpawn = now;
+            const enemyX = Math.floor(Math.random() * (canvas.width - enemyWidth));
+            const enemyY = -enemyHeight;
+            enemies.push([enemyX, enemyY]);
+        }
+
+        // Move enemies and check collisions
+        enemies.forEach((enemy, index) => {
+            enemy[1] += enemySpeed;
+            if (enemy[1] > canvas.height) {
+                enemies.splice(index, 1);
+                score++;
+            }
+            if (checkCollision(playerX, playerY, enemy[0], enemy[1])) {
+                clearInterval(gameInterval);
+                alert('Game over! Your score: ' + score);
+            }
+        });
+
+        // Draw player and enemies
+        drawPlayer(playerX, playerY);
+        drawEnemies();
+
+        // Display score
+        ctx.fillStyle = 'white';
+        ctx.font = '24px Arial';
+        ctx.fillText('Score: ' + score, 10, 30);
+    }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            playerDirection = -1;
+        } else if (event.key === 'ArrowRight') {
+            playerDirection = 1;
+        }
+    });
+
+    document.addEventListener('keyup', () => {
+        playerDirection = 0;
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            clearInterval(gameInterval); // Поставить игру на паузу
+        } else {
+            gameInterval = setInterval(gameLoop, 1000 / 60); // Возобновить игру
+        }
+    });
+
+    let gameInterval = setInterval(gameLoop, 1000 / 60);
+</script>
+</body>
+</html>
