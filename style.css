@@ -687,42 +687,56 @@ right: 120px;;
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #444444;
+    font-family: "Open Sans", sans-serif;
+  }
+  .container {
+    margin: 0 auto;
+    padding: 20px;
+  }
   .site-header {
     min-width: 550px;
-    height: 100vh;
+    height: 90vh;
     margin-bottom: 50px;
     padding-top: 40px;
-    background: #000000 no-repeat center;
+    background: #000000 no-repeat center ;
     background-size: cover;
     color: #ffffff;
   }
   .header-title {
-    width: 410px;
+    width: 510px;
     margin: 0 auto 8px;
     font-family: "Arial", sans-serif;
     text-align: center;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 50px;
     line-height: 40px;
     position: absolute;
     margin-top: 250px;
   }
   .header-suptitle {
     color: #ffffff;
-    font-size: 25px;
+    font-size: 17px;
     font-family: "Open Sans", sans-serif;
   
   }
-  
+
   .header-suptitle::after {
     position: absolute;
     content: '';
+    height: x;
     height: 2px;
     width: 61px;
     background-color: #ffffff;
     top: 60px;
-    left: 50px;
-  
+    left: 130px;
+
   }
   .header-suptitle::before{
     position: absolute;
@@ -731,7 +745,7 @@ right: 120px;;
     width: 61px;
     background-color: #ffffff;
     top: 60px;
-    left: 300px;
+    left: 320px;
   }
   .glav{color: #ffffff;
     text-decoration: none;
@@ -741,12 +755,145 @@ right: 120px;;
   .features li {
     display:inline-block;
     vertical-align: top;
-    width: 23px;
+    width: 120px;
     margin: 18 5px;
-    margin-top: 10px;
+    margin-top: 0px;
     background-repeat: no-repeat;
     background-position: center;
     text-align:center;
    margin-bottom: 5%;
   }
+  .cayt {
+    margin-top: 10px;
+    position: relative;
+    padding-bottom: 200px ;
+    
+  }
+  
+  .cayt-title {
+    font-family: "Tinos", serif;
+    font-style: normal;
+    color: #000000;
+    left: 0;
+    width: 550px;
+    margin: 0 auto 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    position: absolute;
+    margin-top: 0px;
+  }
+  .cayt-desc {
+    color: #656363;
+    font-family: "Open Sans", sans-serif;
+   left: 0;
+    margin-top: 80px;
+    margin-left: 200px;
+    line-height: 30px;
+    width: 550px;
+    margin: 0 auto 8px;
+   text-align: center;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 40px;
+    position: absolute;
+    margin-top: 100px;
+    
+  }
+  .caty-holder {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+  
+  }
+  .cayt-img {
+    position: relative;
+    padding-bottom: 50px;
+  margin-top: 450px;
+  }
+  .black-block {
+    background-image: url(Group\ 3.jpg);
+    padding-bottom: 200px;
+    width: 550px;
+    padding-top: 200px no-repeat center;
+  }
+  .igr-title {
+    font-family: "Tinos", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 54px;
+    text-align: center;
+    color: #000000;
+    padding-top: 132px;
+    padding-bottom: 150px;
+    width: 500px;
+  }
+  .igr-title span {
+    color: #D64DD8;
+  }
+  .igry-text {
+    font-family: "Tinos", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    margin-top: -100px;
+    margin-left: 150px;
+    text-decoration: none;
+    color: #000000;
+    width: 400px;
+  }
+.pr-text {
+font-family: "Tinos", serif;
+font-weight: 700;
+font-style: normal;
+font-size: 30px;
+align-items: center;
+display: flex;
+margin-top: -100px;
+margin-left: 10px;
+text-decoration: none;
+color: #000000;
+}
+.igr-image {
+margin-left: 30px;
+padding-top: 0px;
+
+}
+.pr-img {
+margin-left: 200px;
+padding-top: 200px;
+}
+    
+.igr-images {
+margin-left: 30px;
+padding-top: 200px;
+}
+
+.text-coment {
+color: #ffffff;
+font-size: 25px;
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;  
+font-weight: 500;  
+font-style: italic;  
+font-variation-settings:  "wdth" 100;
+text-align: center;
+line-height: 50px; 
+    text-align: center;
+    padding-top: 170px;
+    padding-bottom: 150px;
+    width: 500px;
+}
+      
+.coment {
+background-image: url(bblok4.jpg);
+background-size: cover;
+padding-top: 200px no-repeat center url("bblok4.jpg");
+padding-bottom: 200px;
+width: 550px;
+margin-top: 200px;
+}
 }
